@@ -1,6 +1,7 @@
 import customtkinter
 import pygame
 import math
+import random
 
 import main_menu
 import config
@@ -31,8 +32,10 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
     game_screen = pygame.display.set_mode(
         (config.GAME_SCREEN_WIDTH, config.GAME_SCREEN_HEIGHT)
     )
-    used_characters = []
+    used_characters = ["W"]
     hangman_step = 0
+    word = random.choice(config.WORDS)
+    word = word.upper()
 
     # -- game loop
     while is_running:
@@ -50,9 +53,12 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
                         )
                         if distance < config.WIDTH // 2:
                             used_characters.append(character)
+                            if character not in word:
+                                hangman_step += 1
 
         game_screen.fill(game_background_color)
 
+        functions.draw_word(game_screen, word, used_characters)
         functions.draw_hangman(game_screen, hangman_step, hangman_color)
         keyboard = functions.draw_keyboard(game_screen, used_characters, keyboard_color)
 
