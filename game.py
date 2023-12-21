@@ -17,6 +17,8 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
     # -- loading settings
     game_background_color = main_menu_window["bg"]
     dark_mode = main_menu_window["bg"] == "gray14"
+    hangman_color = "gray92" if dark_mode else "gray14"
+    keyboard_color = "gray92" if dark_mode else "gray14"
 
     main_menu_window.destroy()
 
@@ -51,8 +53,8 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
 
         game_screen.fill(game_background_color)
 
-        functions.draw_hangman(game_screen, hangman_step)
-        keyboard = functions.draw_keyboard(game_screen, used_characters)
+        functions.draw_hangman(game_screen, hangman_step, hangman_color)
+        keyboard = functions.draw_keyboard(game_screen, used_characters, keyboard_color)
 
         pygame.display.update()
 
