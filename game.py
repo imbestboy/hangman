@@ -1,5 +1,6 @@
 import customtkinter
 import pygame
+import math
 
 import main_menu
 import config
@@ -28,6 +29,8 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
     game_screen = pygame.display.set_mode(
         (config.GAME_SCREEN_WIDTH, config.GAME_SCREEN_HEIGHT)
     )
+    used_characters = []
+    hangman_step = 0
 
     # -- game loop
     while is_running:
@@ -36,10 +39,20 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
             if event.type == pygame.QUIT:
                 is_running = False
                 main_menu.start_main_menu()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                clicked_mouse_x, clicked_mouse_y = pygame.mouse.get_pos()
+                for x, y, character, is_visible in keyboard:
+                    if is_visible:
+                        distance = math.sqrt(
+                            (x - clicked_mouse_x) ** 2 + (y - clicked_mouse_y) ** 2
+                        )
+                        if distance < config.WIDTH // 2:
+                            used_characters.append(character)
 
         game_screen.fill(game_background_color)
 
-        functions.draw_keyboard(game_screen, [])
+        functions.draw_hangman(game_screen, hangman_step)
+        keyboard = functions.draw_keyboard(game_screen, used_characters)
 
         pygame.display.update()
 

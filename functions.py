@@ -82,12 +82,14 @@ def draw_hangman(screen: pygame.surface.Surface, step: int) -> None:
         )
 
 
-def draw_keyboard(screen: pygame.surface.Surface, used_characters: list) -> None:
+def draw_keyboard(screen: pygame.surface.Surface, used_characters: list) -> list:
     ascii_a = 65
     font = pygame.font.SysFont("Helvetica", 20)
+    available_characters = []
     for i in range(26):
         character = chr(ascii_a + i)
-        if character not in used_characters:
+        is_visible = character not in used_characters
+        if is_visible:
             x = (
                 config.START_X
                 + (config.GAP * 2)
@@ -103,3 +105,5 @@ def draw_keyboard(screen: pygame.surface.Surface, used_characters: list) -> None
             pygame.draw.rect(screen, "white", keyboard_rect, 3)
             text = font.render(character, 1, "white")
             screen.blit(text, (x - text.get_width() / 2, y - text.get_height() / 2))
+            available_characters.append((x, y, character, is_visible))
+    return available_characters
