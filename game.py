@@ -32,7 +32,7 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
     game_screen = pygame.display.set_mode(
         (config.GAME_SCREEN_WIDTH, config.GAME_SCREEN_HEIGHT)
     )
-    used_characters = ["W"]
+    used_characters = []
     hangman_step = 0
     word = random.choice(config.WORDS)
     word = word.upper()
@@ -58,11 +58,24 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
 
         game_screen.fill(game_background_color)
 
-        functions.draw_word(game_screen, word, used_characters)
+        is_win = functions.draw_word(game_screen, word, used_characters)
         functions.draw_hangman(game_screen, hangman_step, hangman_color)
         keyboard = functions.draw_keyboard(game_screen, used_characters, keyboard_color)
 
         pygame.display.update()
+
+        if is_win:
+            pygame.time.delay(1000)
+            game_screen.fill(game_background_color)
+            functions.draw_hangman(game_screen, hangman_step, hangman_color)
+            functions.draw_word(
+                game_screen, "YOU WIN", ["Y", "O", "U", " ", "W", "I", "N"]
+            )
+            functions.draw_keyboard(game_screen, used_characters, keyboard_color)
+            pygame.display.update()
+            pygame.time.delay(2000)
+            is_running = False
+            main_menu.start_main_menu()
 
         # -- set FPS to 60
         clock.tick(60)
