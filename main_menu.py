@@ -30,15 +30,35 @@ def start_main_menu() -> customtkinter.CTk:
         theme_frame,
         text="Choose game theme (default : system) : ",
         font=config.normal_font,
-    ).grid(column=0, row=0, padx=10, pady=30)
+    ).grid(column=0, row=0, padx=10)
     customtkinter.CTkButton(
         theme_frame, text="Dark", command=lambda: functions.change_theme("dark")
-    ).grid(column=1, row=0, pady=30)
+    ).grid(column=1, row=0)
     customtkinter.CTkButton(
         theme_frame, text="Light", command=lambda: functions.change_theme("light")
-    ).grid(column=2, row=0, padx=10, pady=30)
+    ).grid(column=2, row=0, padx=10)
 
-    theme_frame.pack()
+    theme_frame.pack(pady=30)
+
+    # -- change word category
+    change_category_frame = customtkinter.CTkFrame(
+        main_menu_window, config.MAIN_MENU_SCREEN_WIDTH, fg_color="transparent"
+    )
+    customtkinter.CTkLabel(
+        change_category_frame,
+        text="Word Category : ",
+        font=config.normal_font,
+    ).grid(column=0, row=0, padx=10)
+
+    optionmenu_var = customtkinter.StringVar(value="Fruits")
+    optionmenu = customtkinter.CTkOptionMenu(
+        change_category_frame,
+        values=["Fruits"],
+        variable=optionmenu_var,
+        font=config.small_bold_font,
+    ).grid(column=1, row=0, padx=10)
+
+    change_category_frame.pack()
 
     # -- start game section
     start_game_frame = customtkinter.CTkFrame(
@@ -50,7 +70,7 @@ def start_main_menu() -> customtkinter.CTk:
         text="Start game",
         command=lambda: game.start_game(main_menu_window=main_menu_window),
         width=220,
-        height=60,
+        height=50,
         font=config.bold_font,
     ).grid(column=2, row=0, padx=55)
 
@@ -59,10 +79,10 @@ def start_main_menu() -> customtkinter.CTk:
         text="Quit",
         command=main_menu_window.destroy,
         width=220,
-        height=60,
+        height=50,
         font=config.normal_font,
     ).grid(column=0, row=0, padx=55)
 
-    start_game_frame.pack()
+    start_game_frame.pack(pady=30)
 
     return main_menu_window
