@@ -34,4 +34,29 @@ def start_main_menu():
 
     theme_frame.pack()
 
+    # -- start game section
+    start_game_frame = customtkinter.CTkFrame(
+        main_menu_window, width=config.MAIN_MENU_SCREEN_WIDTH, fg_color="transparent"
+    )
+
+    customtkinter.CTkButton(
+        start_game_frame,
+        text="Start game",
+        command=lambda: 1,
+        width=220,
+        height=60,
+        font=config.bold_font,
+    ).grid(column=2, row=0, padx=55)
+
+    customtkinter.CTkButton(
+        start_game_frame,
+        text="Quit",
+        command=main_menu_window.destroy,
+        width=220,
+        height=60,
+        font=config.normal_font,
+    ).grid(column=0, row=0, padx=55)
+
+    start_game_frame.pack()
+
     return main_menu_window
