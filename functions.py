@@ -86,6 +86,16 @@ def draw_hangman(screen: pygame.surface.Surface, step: int, color: str) -> None:
 def draw_keyboard(
     screen: pygame.surface.Surface, used_characters: list, color: str
 ) -> list:
+    """draw_keyboard draw keyboard on game screen
+
+    Arguments:
+        screen {pygame.surface.Surface} -- game screen
+        used_characters {list} -- characters user chosen from keyboard
+        color {str} -- keyboard color
+
+    Returns:
+        list -- available characters for user to choose
+    """
     ascii_a = 65
     font = pygame.font.SysFont("Helvetica", 20)
     available_characters = []
