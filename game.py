@@ -20,6 +20,7 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
     dark_mode = main_menu_window["bg"] == "gray14"
     hangman_color = "gray92" if dark_mode else "gray14"
     keyboard_color = "gray92" if dark_mode else "gray14"
+    word_color = "gray92" if dark_mode else "gray14"
 
     main_menu_window.destroy()
 
@@ -58,7 +59,7 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
 
         game_screen.fill(game_background_color)
 
-        is_win = functions.draw_word(game_screen, word, used_characters)
+        is_win = functions.draw_word(game_screen, word, used_characters, word_color)
         functions.draw_hangman(game_screen, hangman_step, hangman_color)
         keyboard = functions.draw_keyboard(game_screen, used_characters, keyboard_color)
 

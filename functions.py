@@ -112,13 +112,16 @@ def draw_keyboard(
     return available_characters
 
 
-def draw_word(screen: pygame.surface.Surface, word: str, used_characters: list) -> bool:
+def draw_word(
+    screen: pygame.surface.Surface, word: str, used_characters: list, color: str
+) -> bool:
     """draw_word draw word in game screen
 
     Arguments:
         screen {pygame.surface.Surface} -- game screen
         word {str} -- word to show
         used_characters {list} -- characters user chosen from keyboard
+        color {str} -- color of word
 
     Returns:
         bool -- word guessed by user or not
@@ -130,6 +133,6 @@ def draw_word(screen: pygame.surface.Surface, word: str, used_characters: list) 
             display_word += character + " "
         else:
             display_word += "_ "
-    text = font.render(display_word, 1, "white")
+    text = font.render(display_word, 1, color)
     screen.blit(text, (400, 200))
     return "_" not in display_word
