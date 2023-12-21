@@ -1,6 +1,8 @@
 import customtkinter
 import pygame
 
+import config
+
 
 def change_theme(theme: str) -> None:
     """change_theme change application theme
@@ -78,3 +80,26 @@ def draw_hangman(screen: pygame.surface.Surface, step: int) -> None:
             (man_body.centerx + 30, man_body.bottom + 40),
             4,
         )
+
+
+def draw_keyboard(screen: pygame.surface.Surface, used_characters: list) -> None:
+    ascii_a = 65
+    font = pygame.font.SysFont("Helvetica", 20)
+    for i in range(26):
+        character = chr(ascii_a + i)
+        if character not in used_characters:
+            x = (
+                config.START_X
+                + (config.GAP * 2)
+                + ((config.WIDTH + config.GAP) * (i % 13))
+            )
+            y = config.START_Y + ((i // 13) * (config.GAP + config.WIDTH))
+            keyboard_rect = pygame.Rect(
+                x - (config.WIDTH // 2),
+                y - (config.WIDTH // 2),
+                config.WIDTH,
+                config.WIDTH,
+            )
+            pygame.draw.rect(screen, "white", keyboard_rect, 3)
+            text = font.render(character, 1, "white")
+            screen.blit(text, (x - text.get_width() / 2, y - text.get_height() / 2))

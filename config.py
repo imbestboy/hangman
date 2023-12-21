@@ -24,3 +24,9 @@ temp_window.destroy()
 # -- game screen config
 GAME_SCREEN_WIDTH = 800
 GAME_SCREEN_HEIGHT = 600
+
+# -- keyboard config
+WIDTH = 40
+GAP = 15
+START_X = round((GAME_SCREEN_WIDTH - (WIDTH + GAP) * 13) / 2)
+START_Y = 450

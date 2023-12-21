@@ -3,6 +3,7 @@ import pygame
 
 import main_menu
 import config
+import functions
 
 
 def start_game(main_menu_window: customtkinter.CTk) -> None:
@@ -37,6 +38,8 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
                 main_menu.start_main_menu()
 
         game_screen.fill(game_background_color)
+
+        functions.draw_keyboard(game_screen, [])
 
         pygame.display.update()
 
