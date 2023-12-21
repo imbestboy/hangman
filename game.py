@@ -70,7 +70,7 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
             game_screen.fill(game_background_color)
             functions.draw_hangman(game_screen, hangman_step, hangman_color)
             functions.draw_word(
-                game_screen, "YOU WIN", ["Y", "O", "U", " ", "W", "I", "N"]
+                game_screen, "YOU WIN", ["Y", "O", "U", " ", "W", "I", "N"], "green"
             )
             functions.draw_keyboard(game_screen, used_characters, keyboard_color)
             pygame.display.update()
@@ -82,7 +82,10 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
             game_screen.fill(game_background_color)
             functions.draw_hangman(game_screen, hangman_step, hangman_color)
             functions.draw_word(
-                game_screen, "GAME OVER", ["G", "A", "M", " ", "O", "V", "E", "R"]
+                game_screen,
+                "GAME OVER",
+                ["G", "A", "M", " ", "O", "V", "E", "R"],
+                "red",
             )
             functions.draw_keyboard(game_screen, used_characters, keyboard_color)
             pygame.display.update()
