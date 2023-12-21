@@ -76,6 +76,18 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
             pygame.time.delay(2000)
             is_running = False
             main_menu.start_main_menu()
+        elif hangman_step == 10:
+            pygame.time.delay(1000)
+            game_screen.fill(game_background_color)
+            functions.draw_hangman(game_screen, hangman_step, hangman_color)
+            functions.draw_word(
+                game_screen, "GAME OVER", ["G", "A", "M", " ", "O", "V", "E", "R"]
+            )
+            functions.draw_keyboard(game_screen, used_characters, keyboard_color)
+            pygame.display.update()
+            pygame.time.delay(2000)
+            is_running = False
+            main_menu.start_main_menu()
 
         # -- set FPS to 60
         clock.tick(60)
