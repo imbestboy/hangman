@@ -4,7 +4,12 @@ import config
 import functions
 
 
-def start_main_menu():
+def start_main_menu() -> customtkinter.CTk:
+    """start_main_menu create main menu window
+
+    Returns:
+        customtkinter.CTk -- main menu window
+    """
     # -- create main menu window
     main_menu_window = customtkinter.CTk()
 
