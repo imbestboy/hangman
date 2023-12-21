@@ -23,4 +23,4 @@ temp_window.destroy()
 
 # -- game screen config
 GAME_SCREEN_WIDTH = 800
-GAME_SCREEN_HEIGHT = 500
+GAME_SCREEN_HEIGHT = 600
