@@ -1,6 +1,8 @@
 import customtkinter
 
-# --  main menu config
+# -- MAIN MENU SECTION
+
+# --  main menu screen config
 MAIN_MENU_SCREEN_WIDTH: int = 1000
 MAIN_MENU_SCREEN_HEIGHT: int = 400
 
@@ -16,3 +18,9 @@ normal_font = customtkinter.CTkFont("Helvetica", 20)
 bold_font = customtkinter.CTkFont("Helvetica", 20, "bold")
 
 temp_window.destroy()
+
+# -- GAME SECTION
+
+# -- game screen config
+GAME_SCREEN_WIDTH = 800
+GAME_SCREEN_HEIGHT = 500
