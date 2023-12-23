@@ -50,10 +50,12 @@ def start_main_menu() -> customtkinter.CTk:
         font=config.normal_font,
     ).grid(column=0, row=0, padx=10)
 
-    optionmenu_var = customtkinter.StringVar(value="Fruits")
+    words = functions.load_words()
+    categories = list(words.keys())
+    optionmenu_var = customtkinter.StringVar(value=categories[0])
     optionmenu = customtkinter.CTkOptionMenu(
         change_category_frame,
-        values=["Fruits"],
+        values=categories,
         variable=optionmenu_var,
         font=config.small_bold_font,
     ).grid(column=1, row=0, padx=10)
@@ -68,7 +70,9 @@ def start_main_menu() -> customtkinter.CTk:
     customtkinter.CTkButton(
         start_game_frame,
         text="Start game",
-        command=lambda: game.start_game(main_menu_window=main_menu_window),
+        command=lambda: game.start_game(
+            main_menu_window=main_menu_window, category=optionmenu_var
+        ),
         width=220,
         height=50,
         font=config.bold_font,

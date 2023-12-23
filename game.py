@@ -8,7 +8,9 @@ import config
 import functions
 
 
-def start_game(main_menu_window: customtkinter.CTk) -> None:
+def start_game(
+    main_menu_window: customtkinter.CTk, category: customtkinter.StringVar
+) -> None:
     """start_game close main menu and start the game
 
     Arguments:
@@ -33,9 +35,10 @@ def start_game(main_menu_window: customtkinter.CTk) -> None:
     game_screen = pygame.display.set_mode(
         (config.GAME_SCREEN_WIDTH, config.GAME_SCREEN_HEIGHT)
     )
-    used_characters = []
+    used_characters = [" "]
     hangman_step = 0
-    word = random.choice(config.WORDS)
+    words = functions.load_words()
+    word = random.choice(words[category.get()])
     word = word.upper()
 
     # -- game loop

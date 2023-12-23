@@ -1,5 +1,7 @@
+import tkinter
 import customtkinter
 import pygame
+import json
 
 import config
 
@@ -146,3 +148,20 @@ def draw_word(
     text = font.render(display_word, 1, color)
     screen.blit(text, (400, 200))
     return "_" not in display_word
+
+
+def load_words() -> dict:
+    """load_words load words and separate by categories
+
+    Returns:
+        dict -- {"category": ["words", "list"]}
+    """
+    try:
+        with open("words.json", "r") as words_file:
+            words_dict = json.loads(words_file.read())
+    except:
+        tkinter.messagebox.showerror(
+            "404 Words not found", "words file not found or invalid !"
+        )
+        exit()
+    return words_dict

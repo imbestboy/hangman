@@ -32,25 +32,3 @@ WIDTH = 40
 GAP = 15
 START_X = round((GAME_SCREEN_WIDTH - (WIDTH + GAP) * 13) / 2)
 START_Y = 450
-
-# -- words
-WORDS = [
-    "Apple",
-    "Banana",
-    "Blueberry",
-    "Cranberry",
-    "Avocados",
-    "Cherry",
-    "Dragon",
-    "Coconut",
-    "Kiwi",
-    "Mango",
-    "melon",
-    "Peach",
-    "Pineapple",
-    "Strawberry",
-    "Watermelon",
-    "Orange",
-    "Lemon",
-    "Papaya",
-]
