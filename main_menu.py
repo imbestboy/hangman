@@ -97,7 +97,9 @@ def start_main_menu() -> customtkinter.CTk:
         start_game_frame,
         text="Start game",
         command=lambda: game.start_game(
-            main_menu_window=main_menu_window, category=optionmenu_var
+            main_menu_window=main_menu_window,
+            category=optionmenu_var,
+            difficulty=difficulty_var,
         ),
         width=220,
         height=50,

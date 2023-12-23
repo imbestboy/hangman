@@ -9,7 +9,9 @@ import functions
 
 
 def start_game(
-    main_menu_window: customtkinter.CTk, category: customtkinter.StringVar
+    main_menu_window: customtkinter.CTk,
+    category: customtkinter.StringVar,
+    difficulty: customtkinter.StringVar,
 ) -> None:
     """start_game close main menu and start the game
 
@@ -31,6 +33,7 @@ def start_game(
     clock = pygame.time.Clock()
     is_running = True
     win_lose_font = pygame.font.SysFont("Helvetica", 35)
+    is_easy = difficulty.get() == "e"
 
     # -- game window size
     game_screen = pygame.display.set_mode(
@@ -59,7 +62,7 @@ def start_game(
                         if distance < config.WIDTH // 2:
                             used_characters.append(character)
                             if character not in word:
-                                hangman_step += 1
+                                hangman_step += 1 if is_easy else 2
 
         game_screen.fill(game_background_color)
 
