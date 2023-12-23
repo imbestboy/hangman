@@ -30,6 +30,7 @@ def start_game(
     pygame.init()
     clock = pygame.time.Clock()
     is_running = True
+    win_lose_font = pygame.font.SysFont("Helvetica", 35)
 
     # -- game window size
     game_screen = pygame.display.set_mode(
@@ -72,9 +73,9 @@ def start_game(
             pygame.time.delay(1000)
             game_screen.fill(game_background_color)
             functions.draw_hangman(game_screen, hangman_step, hangman_color)
-            functions.draw_word(
-                game_screen, "YOU WIN", ["Y", "O", "U", " ", "W", "I", "N"], "green"
-            )
+            functions.draw_word(game_screen, word, used_characters, "green")
+            text = win_lose_font.render("Y O U  W I N", 1, "green")
+            game_screen.blit(text, (400, 285))
             functions.draw_keyboard(game_screen, used_characters, keyboard_color)
             pygame.display.update()
             pygame.time.delay(2000)
@@ -84,12 +85,9 @@ def start_game(
             pygame.time.delay(1000)
             game_screen.fill(game_background_color)
             functions.draw_hangman(game_screen, hangman_step, hangman_color)
-            functions.draw_word(
-                game_screen,
-                "GAME OVER",
-                ["G", "A", "M", " ", "O", "V", "E", "R"],
-                "red",
-            )
+            functions.draw_word(game_screen, word, list(word), "red")
+            text = win_lose_font.render("G A M E  O V E R", 1, "red")
+            game_screen.blit(text, (400, 285))
             functions.draw_keyboard(game_screen, used_characters, keyboard_color)
             pygame.display.update()
             pygame.time.delay(2000)
