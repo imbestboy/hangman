@@ -62,6 +62,32 @@ def start_main_menu() -> customtkinter.CTk:
 
     change_category_frame.pack()
 
+    # -- game difficulty section
+    difficulty_frame = customtkinter.CTkFrame(
+        main_menu_window, config.MAIN_MENU_SCREEN_WIDTH, fg_color="transparent"
+    )
+    customtkinter.CTkLabel(
+        difficulty_frame,
+        text="Choose game difficulty (default: Easy) : ",
+        font=config.normal_font,
+    ).grid(column=0, row=0)
+    difficulty_var = customtkinter.StringVar(value="e")
+    easy_radio_button = customtkinter.CTkRadioButton(
+        difficulty_frame,
+        text="Easy",
+        variable=difficulty_var,
+        value="e",
+    )
+    hard_radio_button = customtkinter.CTkRadioButton(
+        difficulty_frame,
+        text="Hard",
+        variable=difficulty_var,
+        value="h",
+    )
+    easy_radio_button.grid(column=1, row=0, padx=15)
+    hard_radio_button.grid(column=2, row=0)
+    difficulty_frame.pack(pady=30)
+
     # -- start game section
     start_game_frame = customtkinter.CTkFrame(
         main_menu_window, width=config.MAIN_MENU_SCREEN_WIDTH, fg_color="transparent"
@@ -87,6 +113,6 @@ def start_main_menu() -> customtkinter.CTk:
         font=config.normal_font,
     ).grid(column=0, row=0, padx=55)
 
-    start_game_frame.pack(pady=30)
+    start_game_frame.pack()
 
     return main_menu_window
