@@ -2,6 +2,18 @@
 
 Hangman is a Python game made by [Pygame](https://www.pygame.org/) and [CustomTkinter](https://customtkinter.tomschimansky.com/).
 
+## game preview
+
+customize game
+![main-menu](https://github.com/imbestboy/hangman/assets/34400350/c667df17-85da-4151-b097-33e66f56dc44)
+
+light theme and easy mode  
+![win](https://github.com/imbestboy/hangman/assets/34400350/9f7533a8-1cd8-4a14-9414-2b802edd5d3b)
+
+dark theme and hard mode  
+![lose](https://github.com/imbestboy/hangman/assets/34400350/b598d411-b9f7-4b03-b7c7-febf3111ad30)
+
+
 ## Installation
 
 1. install [python3](https://www.python.org/downloads/) in your system
